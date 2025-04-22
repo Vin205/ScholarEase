@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const ApplicationSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  department: { type: String, required: true },
-  year: { type: String, required: true },
+  scholarshipName: { type: String, required: true },
   applicationLink: { type: String, required: true },
   incomeCertificateLink: { type: String, required: true },
   status: { 
@@ -13,9 +11,9 @@ const ApplicationSchema = new mongoose.Schema({
     default: 'Pending' 
   },
   remarks: { type: String, default: '' },
-  submittedAt: { type: Date, default: Date.now }
+  submittedAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date }
 });
-
 
 const StudentSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -32,14 +30,13 @@ const StudentSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 });
 
-// Password hashing
+// Password hashing and comparison methods remain same
 StudentSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
-// Password comparison
 StudentSchema.methods.comparePassword = async function(candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };

@@ -3,14 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from './App'; // Import RootStackParamList from App.tsx
-
+import ScrollContainer from './ScrollContainer'
 type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
 
 const WelcomeScreen: React.FC = () => {
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
 
   return (
-    <View style={styles.container}>
+    <ScrollContainer contentContainerStyle={styles.container}>
       <Text style={styles.title}>Welcome to ScholarEase</Text>
 
       {/* Buttons Container */}
@@ -43,7 +43,7 @@ const WelcomeScreen: React.FC = () => {
           <Text style={styles.buttonText}>Faculty Login</Text>
         </TouchableOpacity>
       </View>
-    </View>
+      </ScrollContainer>
   );
 };
 
