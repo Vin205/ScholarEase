@@ -1,14 +1,22 @@
 // components/ScrollContainer.js
 import React from 'react';
-import { ScrollView, StyleSheet, RefreshControl } from 'react-native';
+import { ScrollView, StyleSheet, Platform } from 'react-native';
 
-const ScrollContainer = ({ children, contentContainerStyle = {}, refreshing, onRefresh }) => {
+const ScrollContainer = ({ 
+  children, 
+  contentContainerStyle = {}, 
+  refreshing, 
+  onRefresh,
+  style = {}
+}) => {
   return (
     <ScrollView
-      style={styles.scrollView}
+      style={[styles.scrollView, style]}
       contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
       showsVerticalScrollIndicator={true}
       showsHorizontalScrollIndicator={false}
+      alwaysBounceVertical={false}
+      keyboardShouldPersistTaps="handled"
       refreshControl={
         onRefresh ? (
           <RefreshControl

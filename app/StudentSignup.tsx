@@ -59,7 +59,11 @@ const StudentSignup = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <ScrollView 
+    contentContainerStyle={styles.scrollContainer}
+    style={styles.scrollView} // Add this style
+    keyboardShouldPersistTaps="handled" // Add this prop
+  >
       <View style={styles.container}>
         <Text style={styles.title}>Student Registration</Text>
 
@@ -168,14 +172,19 @@ const StudentSignup = () => {
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
   scrollContainer: {
     flexGrow: 1,
     paddingVertical: 20,
+    paddingBottom: 40,
   },
   container: {
     flex: 1,
     paddingHorizontal: 25,
-    backgroundColor: '#f5f5f5',
+    minHeight: '100%',
   },
   title: {
     fontSize: 24,
