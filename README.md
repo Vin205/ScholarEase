@@ -1,5 +1,7 @@
 # Welcome to your Expo app 👋
 
+Watch the Working of App - https://drive.google.com/file/d/1GuL7vHU5mvOizbdok2aG6C1tvaB4_MVG/view?usp=sharing
+
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
